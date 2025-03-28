@@ -1,0 +1,25 @@
+﻿@model IEnumerable<PlayerModel>
+
+<h3>Score Board</h3>
+
+<table class="table table-bordered player-list-table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Level</th>
+            <th scope="col">Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var player in Model)
+        {
+            <tr>
+                <td scope="row">@player.Id</td>
+                <td>@player.Name</td>
+                <td>@player.Level</td>
+                <td>@player.Score</td>
+            </tr>
+        }
+    </tbody>
+</table>

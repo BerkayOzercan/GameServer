@@ -1,0 +1,20 @@
+﻿@model PlayerModel
+
+<div class="container">
+    <h1>Edit Player</h1>
+    <form asp-action="Edit" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <h5>Name</h5>
+        <input type="text" asp-for="Name" class="form-control" required />
+
+        <hr>
+
+        <h5>Score</h5>
+        <input type="number" asp-for="Score" class="form-control" required />
+
+        <hr>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

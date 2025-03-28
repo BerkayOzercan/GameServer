@@ -1,0 +1,10 @@
+﻿<div class="container mt-2">
+    <h3>Create Player</h3>
+    <form asp-action="Create">
+        @Html.AntiForgeryToken() <!-- Prevent CSRF attacks -->
+        <input type="text" name="Name" placeholder="Player Name.." class="form-control mt-3" required />
+        <input type="number" name="Score" placeholder="Score.." class="form-control mt-3" required />
+
+        <button type="submit" class="btn btn-primary mt-3">Create</button>
+    </form>
+</div>

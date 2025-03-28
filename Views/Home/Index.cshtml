@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IEnumerable<PlayerModel>
+
+<div class="container">
+    <h1>Welcome</h1>
+    <div class="d-flex justify-content-center">
+        <form asp-action="Index" method="get" class="pt-4">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control" placeholder="Search Player..."
+                    value="@ViewData["CurrentFilter"]" />
+                <button type="submit" class="btn btn-primary">Search</button>
+                <a asp-action="Index" class="btn btn-secondary">Clear</a>
+            </div>
+        </form>
+    </div>
+    <hr>
+    @if (Model == null || !Model.Any())
+    {
+        <p>@ViewData["Message"]</p>
+    }
+    else
+    {
+        @Html.Partial("_PlayerList", Model)
+    }
+</div>

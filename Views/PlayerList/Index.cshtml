@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Player List";
+}
+@model IEnumerable<PlayerModel>
+
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+    <hr>
+    <div style="display: flex; gap: 20px;">
+        <h5>New Player</h5>
+        <a asp-controller="PlayerList" asp-action="Create" class="btn btn-primary">Create</a>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-center index-image">
+        <form asp-action="Index" method="get" class="pt-4">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control" placeholder="Search Player..."
+                    value="@ViewData["CurrentFilter"]" />
+                <button type="submit" class="btn btn-primary">Search</button>
+                <a asp-action="Index" class="btn btn-secondary">Clear</a>
+            </div>
+        </form>
+    </div>
+    <hr>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Level</th>
+                <th scope="col">Score</th>
+                <th scope="col"> </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var player in Model)
+            {
+                <tr>
+                    <td scope="row">@player.Id</td>
+                    <td>@player.Name</td>
+                    <td>@player.Level</td>
+                    <td>@player.Score</td>
+                    <td>
+                        <a asp-controller="PlayerList" asp-action="Edit" asp-route-id="@player.Id"
+                            class="btn btn-outline-primary">Edit</a>
+                        <a asp-controller="PlayerList" asp-action="Delete" asp-route-id="@player.Id"
+                            class="btn btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
